@@ -1,0 +1,35 @@
+<form action="/students/update/" method="post">
+<table border cellpadding=2 cellspaceing=2>
+<caption align=top>Student</caption> 
+    <tr>
+        <td>name</td>
+        <td><input type="text" name="name" value={{student.name}}></input></td>
+    </tr>
+    <tr>
+        <td>address</td>
+        <td><input type="text" name="address" value={{student.address}}></input></td>
+    </tr>
+    <tr>
+        <td>birth</td>
+        <td><input type="text" name="birth" value={{student.birth}}></input></td>
+    </tr>
+    <tr>
+        <td>sex</td>
+        <td><input type="text" name="sex" value={{student.sex}}></input></td>
+    </tr>
+    <tr>
+        <td>email</td>
+        <td><input type="text" name="email" value={{student.email}}></input></td>
+    </tr>
+    <tr>
+        <td>wesite</td>
+        <td><input type="text" name="website" value={{student.website}}></input></td>
+    </tr>
+    <tr style='display:none'>
+        <td>id</td>
+        <td><input type="text" name="id" value={{student.id}}></input></td>
+    </tr>
+</table>
+
+      <p><input type="submit" value="Submit"></p>
+    </form>

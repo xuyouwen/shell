@@ -1,0 +1,44 @@
+﻿<script type="text/javascript">
+function modify(id){
+document.form1.action="/students/modify" + id + "/";
+document.form1.submit();
+}
+function del(id){
+document.form1.action="/students/delete" + id + "/";
+document.form1.submit();
+}
+function add(){
+window.location.href='add/';
+}
+</script>
+<form name="form1" method="post">
+    <table border cellpadding=2 cellspaceing=2>
+    <caption align=top>All Students</caption> 
+        <tr>
+            <td>Name</td>
+            <td>Address</td>
+            <td>Birthday</td>
+            <td>Sex</td>
+            <td>Email</td>
+            <td>Website</td>
+            <td></td>
+            <td style='display:none'/>
+        </tr>
+    {% for student in students %}
+        <tr>
+            <td>{{ student.name }}</td>
+            <td>{{ student.address }}</td>
+            <td>{{ student.birth|date:"F j, Y" }}</td>
+            <td>{{ student.sex }}</td>
+            <td>{{ student.email }}</td>
+            <td><a href={{student.website}} onclick="DoClick(this)">{{student.website}}</a></td>
+            <td><input type="submit" value="Modify" onclick="modify({{student.id}})">
+                <input type="submit" value="Delete" onclick="del({{student.id}})"></td>
+            <td name="id" style='display:none'>{{student.id}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    <hr>
+    <input type="button" value="Add" onclick="add()">
+</form>
+

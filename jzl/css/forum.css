@@ -1,0 +1,152 @@
+
+html,body,div,table {
+	margin:0;
+	padding:0;
+}
+ul {
+	list-style:none;
+}
+
+.right{
+	float:right;
+}
+
+.left{
+	float:left;
+}
+
+body{
+	margin:0 auto;
+	font-size:14px;
+	font-family:Verdana;
+	line-height:1.5;
+	background:DeepSkyBlue;
+	
+}
+#container {
+	width:840px;
+	margin:20px auto;
+	overflow:hidden;
+	padding:30px;
+	background:#B0C4DE;
+	
+}
+
+header,nav,section,article,footer {
+	display:block;
+}
+
+#page-header ul{
+	line-height:20px;
+}
+
+#page-header li a{
+	color:#FFF;
+}
+
+#page-header li a:hover {
+	color:#FF0;
+}
+
+.login {
+	margin-top:8px;
+	margin-right:60px;
+	height:20px;
+}
+
+.register {
+	margin-top:8px;
+}
+
+.user {
+	margin-top:35px;
+	height:20px;
+	margin-right:60px;
+}
+.photo{
+	margin-top:35px;
+	clear:right;
+}
+.intro {
+	margin-top:55px;
+	color:#FFF;
+	font-size:16;
+}
+
+#main-nav {
+	border-top:5px solid #8B0000;
+	margin-top:60px;
+}
+
+#main-nav ul {
+	overflow:hidden;
+	width:100%;
+	list-style:none;
+	font-size:14px;
+}
+#main-nav li {
+	float:left;
+}
+
+#main-nav li a {
+	background:#999;
+	margin:0 5px 0 0;
+	padding:10px 30px;
+	display:block;
+	color:#fff;
+	text-decoration:none;
+}
+
+#main-nav li a:hover {
+	background:#777;
+}
+
+#jianzhi-forum {
+	background:#666666;
+	width:485px;
+	padding:1px 30px;
+	margin-left:40px;
+}
+
+#discuss li {
+	float:left;
+}
+
+#discuss li a{
+	background:#999;
+	margin:0 1px 0 0;
+	padding:10px 30px;
+	display:block;
+	color:#fff;
+	text-decoration:none;
+}
+
+#discuss li a:hover {
+	background:#777;
+}
+
+#showcontent {
+	background:#777;
+	width:533px;
+	float:left;
+	margin-left:40px;
+}
+
+#showcontent h1{
+	padding:10px 30px;
+}
+
+section {
+	float:left;
+}
+
+
+aside {
+	float:right;
+	width:200px;
+	margin-top:0px;
+}
+
+section ul ,aside div,aside h3{
+	margin:1em 0;
+}

@@ -1,5 +1,5 @@
 """
-Django settings for jianzhi project.
+Django settings for mysite_jz project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '1laa@q=pexyfyc2s01yzngss=px$j2mo5r-eo=_*2-$fqdm*&s'
+SECRET_KEY = 'd519nw1&%g8dl&1gg-l6qfdw$i-l-_8hbva)+eh^1cv_=seky1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -36,8 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'regist',
-    
+    'register',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -48,11 +47,12 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+#    'django.middleware.csrf.CsrfResponseMiddleware',
 )
 
-ROOT_URLCONF = 'jianzhi.urls'
+ROOT_URLCONF = 'mysite_jz.urls'
 
-WSGI_APPLICATION = 'jianzhi.wsgi.application'
+WSGI_APPLICATION = 'mysite_jz.wsgi.application'
 
 
 # Database
@@ -60,8 +60,8 @@ WSGI_APPLICATION = 'jianzhi.wsgi.application'
 
 DATABASES = {
     'default': {
-       'ENGINE': 'django.db.backends.sqlite3',
-       'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -91,4 +91,4 @@ DATABASE_PASSWORD='c887d224y',
 DATABASE_HOST='',
 DATABASE_PORT='',
 
-TEMPLATE_DIRS=('/home/yan/Website/jianzhi/regist/templates',)
+TEMPLATE_DIRS=('/home/yan/Website/mysite_jz/templates',)

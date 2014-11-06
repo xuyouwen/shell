@@ -1,0 +1,9 @@
+BEGIN;
+CREATE TABLE "register_user" (
+    "id" integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "username" varchar(11) NOT NULL,
+    "password" varchar(20) NOT NULL
+)
+;
+
+COMMIT;

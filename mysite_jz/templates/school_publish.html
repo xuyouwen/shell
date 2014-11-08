@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>校园勤工俭学发布</title>
+<style type="text/css">
+a:link {
+	color: #FFF;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #FFF;
+}
+a:hover {
+	text-decoration: none;
+	color: #9C0;
+}
+a:active {
+	text-decoration: none;
+	color: #FFF;
+}
+</style>
+</head>
+
+<body>
+<p>&nbsp;</p>
+<table width="760" table align="center" border="0" cellspacing="0" cellpadding="0">
+  <tr style="font-size: 36pt; color: #FFF;">
+    <th scope="col"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr align="center" valign="middle" bgcolor="#00CCFF" style="text-align: center; font-size: 24px; color: #FFF; font-family: 'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, sans-serif;">
+        <th height="40" style="color: #FFF; font-family: 'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: normal;" scope="col"><div align="center"><strong>简直了</strong></div></th>
+        <th height="40" style="color: #FFF; font-size: 18px;" scope="col"><div align="center"><strong><a href="home.html">首页</a></strong></div></th>
+        <th height="40" style="color: #FFF; font-size: 18px;" scope="col"><div align="center"><strong><a href="forum.html">论坛</a></strong></div></th>
+        <th height="40" style="color: #FFF; font-size: 18px;" scope="col"><div align="center"><strong><a href="publish.html">发布工作</a></strong></div></th>
+      </tr>
+    </table></th>
+  </tr>
+</table>
+<table width="760" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <th height="60" style="text-align: left; font-size: 18px; font-style: normal; font-family: Baskerville, 'Palatino Linotype', Palatino, 'Century Schoolbook L', 'Times New Roman', serif;" scope="col">校园勤工俭学信息：</th>
+  </tr>
+</table>
+<!--
+<table width="760" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <th scope="col"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th width="20%" height="50" style="font-weight: normal" scope="col">俭学标题：</th>
+        <th width="80%" height="50" style="text-align: left" scope="col"><span style="text-align: left">
+          <input type="text" style="width:200px; height:25px;" name="jx_1" id="jx_1">
+        </span></th>
+      </tr>
+      <tr>
+        <td height="50" style="font-weight: normal; text-align: center;">工作地点：</td>
+        <td height="50" style="text-align: left"><span style="text-align: left">
+          <input type="text" style="width:200px; height:25px;" name="jx_2" id="jx_2">
+        </span></td>
+      </tr>
+      <tr>
+        <td height="50" style="font-weight: normal; text-align: center;">工作时间：</td>
+        <td height="50" style="text-align: left"><span style="text-align: left">
+          <input type="text" style="width:200px; height:25px;" name="jx_3" id="jx_3">
+        </span></td>
+      </tr>
+      <tr>
+        <td height="50" style="font-weight: normal; text-align: center;">联系人：</td>
+        <td height="50" style="text-align: left"><span style="text-align: left">
+          <input type="text" style="width:200px; height:25px;" name="jx_4" id="jx_4">
+        </span></td>
+      </tr>
+      <tr>
+        <td height="50" style="font-weight: normal; text-align: center;">联系电话：</td>
+        <td height="50" style="text-align: left"><span style="text-align: left">
+          <input type="text" style="width:200px; height:25px;" name="jx_5" id="jx_5">
+        </span></td>
+      </tr>
+      <tr>
+        <td height="50" style="font-weight: normal; text-align: center;">联系邮箱：</td>
+        <td height="50" style="text-align: left"><span style="text-align: left">
+          <input type="text" style="width:200px; height:25px;" name="jx_6" id="jx_6">
+        </span></td>
+      </tr>
+      <tr>
+        <td height="50" style="font-weight: normal; text-align: center;">招聘人数：</td>
+        <td height="50" style="text-align: left"><span style="text-align: left">
+          <input type="text" style="width:200px; height:25px;" name="jx_7" id="jx_7">
+        </span></td>
+      </tr>
+      <tr>
+        <td height="50" style="font-weight: normal; text-align: center;">工资待遇：</td>
+        <td height="50" style="text-align: left"><span style="text-align: left">
+          <input type="text" style="width:200px; height:25px;" name="jx_8" id="jx_8">
+        </span></td>
+      </tr>
+      <tr>
+        <td height="50" style="font-weight: normal; text-align: center;">内容描述：</td>
+        <td height="90" style="text-align: left"><span style="text-align: left">
+          <textarea style="width:400px; height:70px;" name="jx_9" id="jx_9"></textarea>
+        </span></td>
+      </tr>
+    </table></th>
+  </tr>
+  <tr>
+    <td height="60" style="text-align: center">
+      <input type="submit" style="width:40px; height:25px;" name="submit_jx_1" id="submit_jx_1" value="提交"></td>
+  </tr>
+</table>
+-->
+{%for item in error %}
+  {%endfor%}
+<center>
+<form method = 'post' enctype="multipart/form-data">
+	  {%csrf_token%}
+	  <table>
+		  {{sp_f.as_table }}
+	  </table>
+	  <input type="submit" style="margin-left:80px" value="提交">
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

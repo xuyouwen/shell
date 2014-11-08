@@ -1,5 +1,0 @@
-BEGIN;
-CREATE TABLE "jzldb_organization" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "name" varchar(30) NOT NULL, "code" varchar(30) NOT NULL, "industry" varchar(30) NOT NULL, "property" varchar(30) NOT NULL, "size" varchar(30) NOT NULL, "address" varchar(30) NOT NULL, "linkman" varchar(10) NOT NULL, "phone" varchar(11) NOT NULL, "intro" varchar(100) NOT NULL);
-CREATE TABLE "jzldb_students" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "name" varchar(30) NOT NULL, "city" varchar(60) NOT NULL, "school" varchar(50) NOT NULL, "age" integer NOT NULL, "height" integer NOT NULL, "phone" varchar(11) NOT NULL, "email" varchar(75) NOT NULL, "qq" varchar(15) NOT NULL, "workexp" varchar(50) NOT NULL, "careerexp" varchar(50) NOT NULL);
-
-COMMIT;

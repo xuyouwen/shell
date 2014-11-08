@@ -72,29 +72,39 @@ body {
     <th width="472" bgcolor="#66FF66" style="text-align: center; font-style: normal; font-weight: normal;" scope="col"><p>&nbsp;</p>
       <p>&nbsp;</p>
       <p>
+	  <span style="text-align: center">
+		</span>
+		<center>
 			<form method="post" enctype="multipart/form-data">
 				{% csrf_token %}
 				<table>
 					{{uf.as_table }}
 				</table>
-			<input type="submit" value="登录"/>
+
+				<input type="checkbox" name="checkbox_dl_1" id="checkbox_dl_1" >记住我
+
+				<input type="submit" value="登录"/>
 			<!--input type="button" value="Register" onclick="register()"-->
 			<!--     <input name="id_1"  style="width: 200px; height: 25px;" type="text" id="id_1" placeholder="请输入手机号"> -->
 			</form>
-      </span></p>
+		</center>
+      </p>
     <p>
       <span style="text-align: center">
     <!--  <label for="password_1">密&nbsp;&nbsp;&nbsp;&nbsp;码 :</label>
       <input name="password_1" style="width: 200px; height: 25px;" type="text" id="password_1" placeholder="请输入密码">
 	  </span><span style="text-align: center"></span> </p> -->
     <p>&nbsp;</p>
-    <p><span style="text-align: left"></span>
+	
+ <!--   <p><span style="text-align: left"></span>
       <input type="checkbox" name="checkbox_dl_1" id="checkbox_dl_1">
       记住我&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;忘记密码？</p>
     <p>&nbsp;</p>
     <p>
-      <input type="submit" style="width: 40px; height: 25px;font-size:12px" name="submit_login_1" id="submit_login_1" value="登录">
+			<input type="submit" value="登录"/>
+      <input type="submit" style="width: 40px; height: 25px;font-size:12px" name="submit_login_1" id="submit_login_1" value="登录"
     </p>
+-->
     <p>&nbsp;</p></th>
     <th width="288" bgcolor="#FFFFFF" scope="col"><p style="font-style: inherit; font-weight: bolder; font-size: 14px;">没有账号？</p>
       <p>

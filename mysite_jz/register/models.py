@@ -20,8 +20,8 @@ class Organization(models.Model):
     phone=models.CharField(verbose_name=u'联系电话',max_length=15)
     intro=models.TextField(verbose_name=u'机构简介',max_length=200)
 
-#    def __unicode__(self):
-#        return self.org_name
+    def __unicode__(self):
+        return self.org_name
 
 class School(models.Model):
     sch_name=models.CharField(verbose_name=u'学校名称',max_length=40)
@@ -30,8 +30,8 @@ class School(models.Model):
     phone=models.CharField(verbose_name=u'联系电话',max_length=15)
     intro=models.TextField(verbose_name=u'学校简介',max_length=200)
 
-#    def __unicode__(self):
-#        return self.sch_name
+    def __unicode__(self):
+        return self.sch_name
 
 class Resume(models.Model):
     name=models.CharField(verbose_name=u'姓名',max_length=10)
@@ -44,8 +44,8 @@ class Resume(models.Model):
     desire=models.CharField(verbose_name=u'求职意向',max_length=30)
     work_exp=models.TextField(verbose_name=u'工作经验',max_length=100)
     apply_exp=models.TextField(verbose_name=u'求职经验',max_length=100)
-#    def __unicode__(self):
-#        return self.name
+    def __unicode__(self):
+        return self.name
 
 class SchoolPublish(models.Model):
     title=models.CharField(verbose_name=u'检学标题',max_length=40)
@@ -58,6 +58,8 @@ class SchoolPublish(models.Model):
     wages=models.CharField(verbose_name=u'工资待遇',max_length=40)
     intro=models.TextField(verbose_name=u'内容描述',max_length=200)
 
+    def __unicode__(self):
+        return self.title
 class OrgPublish(models.Model):
 
     title=models.CharField(verbose_name=u'兼职标题',max_length=40)
@@ -70,3 +72,5 @@ class OrgPublish(models.Model):
     recruit_nu=models.IntegerField(verbose_name=u'招聘人数')
     wages=models.CharField(verbose_name=u'工资待遇',max_length=40)
     intro=models.TextField(verbose_name=u'内容描述',max_length=200)
+    def __unicode__(self):
+        return self.title

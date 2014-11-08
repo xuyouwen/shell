@@ -5,7 +5,7 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'mysite_jz.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-
+    url(r'^grappelli/', include('grappelli.urls')), # grappelli URLS''
     url(r'^admin/', include(admin.site.urls)),
     url(r'^regist/$','register.views.regist'),
     url(r'^login/$','register.views.login'),
@@ -19,4 +19,6 @@ urlpatterns = patterns('',
     url(r'^resume/$','register.views.resume'),
     url(r'^publish/$','register.views.publish'),
     url(r'^school_publish/$','register.views.school_publish'),
+    url(r'^forums/', include('forums.urls', namespace='forums')),
+#    url(r'^forum/', include('pybb.urls', namespace='pybb')),
 )

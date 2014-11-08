@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -37,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'register',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -49,6 +51,11 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 #    'django.middleware.csrf.CsrfResponseMiddleware',
 )
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+                "django.core.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                )
 
 ROOT_URLCONF = 'mysite_jz.urls'
 
@@ -93,3 +100,8 @@ DATABASE_HOST='',
 DATABASE_PORT='',
 
 TEMPLATE_DIRS=('/home/yan/Website/mysite_jz/templates',)
+
+STATICFILES_FINDERS = (
+            'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+            'django.contrib.staticfiles.finders.FileSystemFinder',
+                )

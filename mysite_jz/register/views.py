@@ -54,75 +54,9 @@ class SchoolPublishForm(ModelForm):
 class OrgPublishForm(ModelForm):
     class Meta:
         model=OrgPublish
-'''
-class Org_authenticateForm(forms.Form):
-    org_name=forms.CharField(label='机构名称',max_length=40)
-    licence_no=forms.CharField(label='执照编号',max_length=30)
-    industry=forms.CharField(label='所属行业',max_length=30)
-    org_property=forms.CharField(label='机构性质',max_length=30)
-    org_size=forms.IntegerField(label='机构规模')
-    org_addr=forms.CharField(label='机构地址',max_length=80)
-    linkman=forms.CharField(label='联系人',max_length=10)
-    phone=forms.CharField(label='联系电话',max_length=15)
-    intro=forms.CharField(label='机构简介',widget=forms.Textarea)
 
-class Sch_authenticateForm(forms.Form):
-    sch_name=forms.CharField(label='学校名称',max_length=40)
-    sch_addr=forms.CharField(label='学校地址',max_length=80)
-    linkman=forms.CharField(label='联系人',max_length=10)
-    phone=forms.CharField(label='联系电话',max_length=15)
-    intro=forms.CharField(label='学校简介',widget=forms.Textarea)
-
-class ResumeForm(forms.Form):
-    name=forms.CharField(label='姓名',max_length=10)
-    city=forms.CharField(label='城市',max_length=15)
-    age=forms.IntegerField(label='年龄')
-    school=forms.CharField(label='学校',max_length=30)
-    qq=forms.CharField(label='QQ',max_length=20)
-    phone=forms.CharField(label='手机号',max_length=15)
-    email=forms.EmailField(label='邮箱')
-    desire=forms.CharField(label='求职意向',max_length=30)
-    work_exp=forms.CharField(label='工作经验',widget=forms.Textarea)
-    apply_exp=forms.CharField(label='求职经验',widget=forms.Textarea)
-
-class SchoolPublishForm(forms.Form):
-    title=forms.CharField(label='检学标题',max_length=40)
-    work_addr=forms.CharField(label='工作地点',max_length=80)
-    work_time=forms.CharField(label='工作时间',max_length=80)
-    linkman=forms.CharField(label='联系人',max_length=10)
-    phone=forms.CharField(label='联系电话',max_length=15)
-    email=forms.EmailField(label='邮箱')
-    recruit_nu=forms.IntegerField(label='招聘人数')
-    wages=forms.CharField(label='工资待遇',max_length=40)
-    intro=forms.CharField(label='内容描述',widget=forms.Textarea)
-
-class OrgPublishForm(forms.Form):
-    title=forms.CharField(label='兼职标题',max_length=40)
-    work_type=forms.ModelMultipleChoiceField(label='兼职类型',choice=TYPE_CHOICES)
-    work_addr=forms.CharField(label='工作地点',max_length=80)
-    work_time=forms.CharField(label='工作时间',max_length=80)
-    linkman=forms.CharField(label='联系人',max_length=10)
-    phone=forms.CharField(label='联系电话',max_length=15)
-    email=forms.EmailField(label='邮箱')
-    recruit_nu=forms.IntegerField(label='招聘人数')
-    wages=forms.CharField(label='工资待遇',max_length=40)
-    intro=forms.CharField(label='内容描述',widget=forms.Textarea)
-'''
 #注册
-'''def regist(req):
-    if req.method == 'POST':
-        uf = RegistForm(req.POST)
-        if uf.is_valid():
-            #获得表单数据
-            username = uf.cleaned_data['username']
-            password = uf.cleaned_data['password']
-            #添加到数据库
-            User.objects.create(username= username,password=password)
-            return HttpResponse('regist success!!')
-    else:
-        uf = RegistForm()
-    return render_to_response('regist.html',{'uf':uf}, context_instance=RequestContext(req))
-'''
+
 #regist
 def regist(req):
     error=[]
@@ -204,9 +138,7 @@ def logout(req):
 def personal(req):
     return HttpResponseRedirect('/personal/')
 
-'''def index(req):
-    return HttpResponseRedirect('/index')
-'''
+
 #            
 def changepassword(request,username):  
     error = []  
@@ -262,7 +194,7 @@ def school_legalize(req):
         'sl_f':sl_f,'error':error},context_instance=RequestContext(req))
 
 
-
+#
 def school_publish(req):
     error=[]
     if req.method=='POST':

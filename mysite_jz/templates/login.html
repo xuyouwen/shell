@@ -57,9 +57,9 @@ body {
     <th scope="col"><table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr align="center" valign="middle" bgcolor="#00CCFF" style="text-align: center; font-size: 24px; color: #FFF; font-family: 'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, sans-serif;">
           <th height="40" style="color: #FFF; font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, sans-serif; font-size: 18px; font-weight: bolder;" scope="col"><div align="center"><strong>简直了</strong></div></th>
-          <th height="40" style="color: #FFF" scope="col"><div align="center"><strong><a href="home.html">首页</a></strong></div></th>
-          <th height="40" style="color: #FFF" scope="col"><div align="center"><strong><a href="forum.html">论坛</a></strong></div></th>
-          <th height="40" style="color: #FFF" scope="col"><div align="center"><strong><a href="publish.html">发布工作</a></strong></div></th>
+          <th height="40" style="color: #FFF" scope="col"><div align="center"><strong><a href="/index">首页</a></strong></div></th>
+          <th height="40" style="color: #FFF" scope="col"><div align="center"><strong><a href="/forum">论坛</a></strong></div></th>
+          <th height="40" style="color: #FFF" scope="col"><div align="center"><strong><a href="/publish">发布工作</a></strong></div></th>
         </tr>
     </table></th>
   </tr>
@@ -113,9 +113,11 @@ body {
       <p>&nbsp;</p>
     <p style="font-weight: 400; font-style: normal; font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace;">使用以下账号直接登录</p>
     <p style="font-weight: 400; font-style: normal; font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace;">
-      <input name="imageField" type="image" id="imageField" src="qq.jpg" width="25" height="30">
-      <input name="imageField2" type="image" id="imageField2" src="微信.png" width="30" height="30">
-       <input name="imageField3" type="image" id="imageField3" src="新浪微博.jpg" width="30" height="30">
+	{% load staticfiles %}  
+	
+	<input name="imageField" type="image" id="imageField" src="{%static "qq.jpg"%}" width="25" height="30">
+	<input name="imageField2" type="image" id="imageField2" src="{%static "微信.png"%}" width="30" height="30">
+	<input name="imageField3" type="image" id="imageField3" src="{%static "新浪微博.jpg"%}" width="30" height="30">
     </p></th>
   </tr>
 </table>

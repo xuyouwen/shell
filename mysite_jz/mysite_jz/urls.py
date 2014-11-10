@@ -19,6 +19,14 @@ urlpatterns = patterns('',
     url(r'^resume/$','register.views.resume'),
     url(r'^publish/$','register.views.publish'),
     url(r'^school_publish/$','register.views.school_publish'),
+    url(r'^business_center/$','register.views.business_center'),
+    url(r'^Campus_community/$','register.views.Campus_community'),
+    url(r'^personal/$','register.views.personal'),
     url(r'^forums/', include('forums.urls', namespace='forums')),
 #    url(r'^forum/', include('pybb.urls', namespace='pybb')),
+#    url( r'^static/(?P<path>.*)$', 'django.views.static.serve',{'document_root':settings.STATIC_ROOT }),
 )
+#if settings.DEBUG:
+#        urlpatterns += patterns('django.contrib.staticfiles.views',
+#                        url(r'^static/(?P<path>.*)$', 'serve'),
+#                            )

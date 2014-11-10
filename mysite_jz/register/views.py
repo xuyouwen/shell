@@ -8,15 +8,7 @@ from django.template import RequestContext
 from django.contrib.auth import authenticate,login as auth_login,logout as auth_logout
 #from django.newforms import form_for_model
 from django.forms import ModelForm
-
-TYPE_CHOICE=(
-        ('level1','短工'),
-        ('level2','校内'),
-        ('level3','实习'),
-        ('level4','勤工俭学'),
-        ('level5','教育/服务') 
-        )
-
+import os,sys
 
 class LoginForm(forms.Form):
     username = forms.CharField(label='用户名:',max_length=100)
@@ -56,8 +48,6 @@ class OrgPublishForm(ModelForm):
         model=OrgPublish
 
 #注册
-
-#regist
 def regist(req):
     error=[]
     if req.method=='POST':
@@ -105,7 +95,7 @@ def login(req):
             if user:
                 #比较成功，跳转index
                 #response = HttpResponseRedirect('/index/')
-                return render_to_response('index.html',{'user':username})
+                return render_to_response('/index',{'user':username})
                 #将username写入浏览器cookie,失效时间为3600
                 #response.set_cookie('username',username,3600)
                 #return response#
@@ -134,12 +124,7 @@ def logout(req):
     response.delete_cookie('username')
     return response
 
-
-def personal(req):
-    return HttpResponseRedirect('/personal/')
-
-
-#            
+#更改密码            
 def changepassword(request,username):  
     error = []  
     if request.method == 'POST':  
@@ -171,7 +156,8 @@ def legalize(req):
         leg_f=Org_authenticateForm(req.POST)
         if leg_f.is_valid():                             
             leg_f.save()
-            return render_to_response('login.html')
+#            return render_to_response('login.html')
+            return HttpResponseRedirect('/index/')  
         else:
             error.append('Please input all the information')
     else:
@@ -179,13 +165,15 @@ def legalize(req):
     return render_to_response('legalize.html',{
         'leg_f':leg_f,'error':error},context_instance=RequestContext(req))
 
+#学校认证
 def school_legalize(req):
     error=[]
     if req.method=='POST':
         sl_f=Sch_authenticateForm(req.POST)
         if sl_f.is_valid():
             sl_f.save()
-            return render_to_response('login.html')
+#            return render_to_response('login.html')
+            return HttpResponseRedirect('/index/')  
         else:
             error.append('Please input all the information')
     else:
@@ -194,14 +182,15 @@ def school_legalize(req):
         'sl_f':sl_f,'error':error},context_instance=RequestContext(req))
 
 
-#
+#校园发布兼职信息
 def school_publish(req):
     error=[]
     if req.method=='POST':
         sp_f=SchoolPublishForm(req.POST)
         if sp_f.is_valid():
             sp_f.save()
-            return render_to_response('login.html')
+#            return render_to_response('Campus_community.html')
+            return HttpResponseRedirect('/Campus_community/')  
         else:
             error.append('Please input all the information')
     else:
@@ -209,14 +198,15 @@ def school_publish(req):
     return render_to_response('school_publish.html',{
         'sp_f':sp_f,'error':error},context_instance=RequestContext(req))
 
-
+#企业发布兼职信息
 def publish(req):
     error=[]
     if req.method=='POST':
         p_f=OrgPublishForm(req.POST)
         if p_f.is_valid():
             p_f.save()
-            return render_to_response('login.html')
+#            return render_to_response('business_center.html')
+            return HttpResponseRedirect('/business_center/')  
         else:
             error.append('Please input all the information')
     else:
@@ -224,16 +214,35 @@ def publish(req):
     return render_to_response('publish.html',{
         'p_f':p_f,'error':error},context_instance=RequestContext(req))
 
+#个人简历信息
 def resume(req):
     error=[]
     if req.method=='POST':
         r_f=ResumeForm(req.POST)
+
         if r_f.is_valid():
+            name= r_f.cleaned_data['name']
             r_f.save()
-            return render_to_response('login.html')
+            #return render_to_response('/personal',{'name':name})
+            return HttpResponseRedirect('/personal/')  
         else:
             error.append('Please input all the information')
     else:
         r_f=ResumeForm()
     return render_to_response('resume.html',{
         'r_f':r_f,'error':error},context_instance=RequestContext(req))
+
+#企业中心
+def business_center(req):
+    names = OrgPublish.objects.all()
+    return render_to_response("business_center.html",locals())
+
+#校园中心
+def Campus_community(req):
+    names = SchoolPublish.objects.all()
+    return render_to_response("Campus_community.html",locals())
+
+#个人中心
+def personal(req):
+    names = Resume.objects.all()
+    return render_to_response("personal.html",locals())

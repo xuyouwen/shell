@@ -2,6 +2,14 @@
 from django.db import models
 
 # Create your models here.
+
+TOPIC_CHOICES = (
+                ('leve1', '短工'),
+                ('leve2', '校内'),
+                ('leve3', '实习'),
+                ('leve3', '勤工俭学'),
+                ('leve3', '教育/服务'),
+                ) 
 class User(models.Model):
     username=models.CharField(max_length=11)
     password=models.CharField(max_length=20)
@@ -10,6 +18,7 @@ class User(models.Model):
         return self.username
 
 class Organization(models.Model):
+#    org_id=models.AutoField(primary_key=True)
     org_name=models.CharField(verbose_name=u'机构名称',max_length=40)
     licence_no=models.CharField(verbose_name=u'执照编号',max_length=30)
     industry=models.CharField(verbose_name=u'所属行业',max_length=30)
@@ -24,6 +33,7 @@ class Organization(models.Model):
         return self.org_name
 
 class School(models.Model):
+#    sch_id=models.AutoField(primary_key=True)
     sch_name=models.CharField(verbose_name=u'学校名称',max_length=40)
     sch_addr=models.CharField(verbose_name=u'学校地址',max_length=80)
     linkman=models.CharField(verbose_name=u'联系人',max_length=10)
@@ -48,6 +58,7 @@ class Resume(models.Model):
         return self.name
 
 class SchoolPublish(models.Model):
+#    sch=models.Foreignkey(verbose_name=u'发布学校',School)
     title=models.CharField(verbose_name=u'检学标题',max_length=40)
     work_addr=models.CharField(verbose_name=u'工作地点',max_length=80)
     work_time=models.CharField(verbose_name=u'工作时间',max_length=80)
@@ -57,13 +68,16 @@ class SchoolPublish(models.Model):
     recruit_nu=models.IntegerField(verbose_name=u'招聘人数')
     wages=models.CharField(verbose_name=u'工资待遇',max_length=40)
     intro=models.TextField(verbose_name=u'内容描述',max_length=200)
-
+    datetime=models.DateTimeField(verbose_name=u'发布时间',auto_now_add=True)
+    sch=models.ForeignKey(School,verbose_name=u'学校名称')
+#    sch_id=models.AutoField(primary_key=True)
     def __unicode__(self):
         return self.title
-class OrgPublish(models.Model):
 
+class OrgPublish(models.Model):
+#    org=models.Foreignkey(verbose_name=u'发布机构',Organization)
     title=models.CharField(verbose_name=u'兼职标题',max_length=40)
-    work_type=models.CharField(verbose_name=u'兼职类型',max_length=40)
+    work_type=models.CharField(verbose_name=u'兼职类型',choices=TOPIC_CHOICES,max_length=20,blank=False)
     work_addr=models.CharField(verbose_name=u'工作地点',max_length=80)
     work_time=models.CharField(verbose_name=u'工作时间',max_length=80)
     linkman=models.CharField(verbose_name=u'联系人',max_length=10)
@@ -72,5 +86,7 @@ class OrgPublish(models.Model):
     recruit_nu=models.IntegerField(verbose_name=u'招聘人数')
     wages=models.CharField(verbose_name=u'工资待遇',max_length=40)
     intro=models.TextField(verbose_name=u'内容描述',max_length=200)
+    datetime=models.DateTimeField(verbose_name=u'发布时间',auto_now_add=True)
+    org=models.ForeignKey(Organization,verbose_name=u'发布机构')
     def __unicode__(self):
-        return self.title
+        return self.org

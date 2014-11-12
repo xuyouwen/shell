@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-
+#from django.views.generic.simple import direct_to_template
+from django.views.generic.base import TemplateView
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'mysite_jz.views.home', name='home'),
@@ -11,8 +12,10 @@ urlpatterns = patterns('',
     url(r'^login/$','register.views.login'),
     url(r'^login/regist/$','register.views.regist'),
     url(r'^index/$','register.views.index'),
+    url(r'^index_login/$','register.views.index_login'),
     url(r'^logout/$','register.views.logout'),
-    url(r'^changepassword/(?P<username>\w+)/$','register.views.changepassword'),
+#    url(r'^ch_password/(?P<username>\w+)/$','register.views.ch_password'),
+    url(r'^ch_password/$','register.views.ch_password'),
     url(r'^personal/$','register.views.personal'),
     url(r'^legalize/$','register.views.legalize'),
     url(r'^school_legalize/$','register.views.school_legalize'),
@@ -23,6 +26,8 @@ urlpatterns = patterns('',
     url(r'^Campus_community/$','register.views.Campus_community'),
     url(r'^personal/$','register.views.personal'),
     url(r'^forums/', include('forums.urls', namespace='forums')),
+#    url(r'^index_login/$', TemplateView.as_view(template_name='index_login.html'),('^index_login/(w+)/$')),
+#    url(r'^index_login/$',direct_to_template, {'template': 'index_login.html'}),
 #    url(r'^forum/', include('pybb.urls', namespace='pybb')),
 #    url( r'^static/(?P<path>.*)$', 'django.views.static.serve',{'document_root':settings.STATIC_ROOT }),
 )

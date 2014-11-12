@@ -6,37 +6,7 @@
 <title>简直了首页</title>
 
 <style type="text/css">
-/*
-#apDiv1 {
-	position: absolute;
-	left: 38px;
-	top: 151px;
-	width: 182px;
-	height: 79px;
-	z-index: 1;
-	color: #D6D6D6;
-	background-color: #996600;
-}
-body table tr td {
-	text-align: center;
-}
-#apDiv2 {
-	position: absolute;
-	left: 180px;
-	top: 42px;
-	width: 290px;
-	height: 34px;
-	z-index: 1;
-}
-#apDiv3 {
-	position: absolute;
-	left: 191px;
-	top: 189px;
-	width: 123px;
-	height: 102px;
-	z-index: 1;
-}
-*/
+
 body p {
 	text-align: center;
 }
@@ -100,10 +70,8 @@ tr {
 	<table width="980" border="0" align="center" cellpadding="0" cellspacing="0" background-image:url({%static "picture/top图片1.png"%})>
   <tr bgcolor=0099ff>
 		{% csrf_token %}
-<!--	  <td style="text-align:right"background-image:url({
-	%static "picture/top图片1.png"%}) height="150" valign="top">欢迎：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;[登陆]&nbsp;  [注册]</td>-->
-<!--<td style="text-align:right" background(/static/picture/top图片1.png) height="150" valign="top">欢迎：{{username}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<a href="/login">[登陆]</a>&nbsp;  <a href="/regist">[注册]</a></td>-->
-<td style="text-align:right" background-color=blue height="150" valign="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<a href="/login">[登陆]</a>&nbsp;  <a href="/regist">[注册]</a></td>
+
+<td style="text-align:right" background-color=blue height="150" valign="top">欢迎来到简直了!{{username}}&nbsp;&nbsp;&nbsp;</td>
   </tr>
 </table>
 <table bordercolor="#0099FF" border="1" width="980" align="center">
@@ -225,50 +193,11 @@ tr {
             <td height="35" bgcolor="#0099FF" style="border: #000 1px dashed; font-size: 16px; text-align: left; color:#FFF">&nbsp; 招聘信息</td>
           </tr>
         </table>
-	<!--	
-          <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-            <tr>
-              <td width="78%" height="30"><ul>
-                <li>公司A预招聘UI设计师3名</li>
-              </ul></td>
-              <td style="font-size: 14px" width="22%" height="30">2014.11.1</td>
-            </tr>
-            <tr>
-              <td height="30"><ul>
-                <li>公司B现需要兼职文员1人</li>
-              </ul></td>
-              <td style="font-size: 14px; color: #000;" height="30">2014.10.30</td>
-            </tr>
-            <tr>
-              <td height="30"><ul>
-                <li>公司C现需要兼职文员1人</li>
-              </ul></td>
-              <td height="30"><span style="font-size: 14px">2014.10.30</span></td>
-            </tr>
-            <tr>
-              <td height="30"><ul>
-                <li>公司D现需要兼职文员1人</li>
-              </ul></td>
-              <td height="30"><span style="font-size: 14px">2014.10.30</span></td>
-            </tr>
-            <tr>
-              <td height="30"><ul>
-                <li>公司E现需要兼职文员1人</li>
-              </ul></td>
-              <td height="30"><span style="font-size: 14px">2014.10.30</span></td>
-            </tr>
-            <tr>
-              <td height="30"><ul>
-                <li>公司F现需要兼职文员1人</li>
-                </ul></td>
-              <td height="30"><span style="font-size: 14px">2014.10.29</span></td>
-            </tr>
-          </table>
-	-->
+
 		  </td>
       </tr>
         <tr>
-			<!--    <td height="50" valign="middle">上一页&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下一页</td> -->
+
         </tr>
       </table>
 

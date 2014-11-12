@@ -10,11 +10,18 @@ from django.contrib.auth import authenticate,login as auth_login,logout as auth_
 from django.forms import ModelForm
 import os,sys
 
+type_choice = ( 
+            ('per', u"个人"), 
+            ('org', u"企业"),         
+            ('sch', u"学校"),    
+            ) 
+
 class LoginForm(forms.Form):
     username = forms.CharField(label='用户名:',max_length=100)
     password = forms.CharField(label='密  码:',widget=forms.PasswordInput())
 
 class RegistForm(forms.Form):
+#    type=forms.ChoiceField(label=(u'所属类型'),required=True, widget=forms.RadioSelect, choices=type_choice) 
     username=forms.CharField(label='用户名:')
     password=forms.CharField(label='密  码:',widget=forms.PasswordInput())
     password2=forms.CharField(label='确  认:',widget=forms.PasswordInput())
@@ -48,29 +55,33 @@ class OrgPublishForm(ModelForm):
         model=OrgPublish
 
 #注册
-def regist(req):
+def regist(request):
     error=[]
-    if req.method=='POST':
-        rf=RegistForm(req.POST)
+    if request.method=='POST':
+        rf=RegistForm(request.POST)
         if rf.is_valid():
             data=rf.cleaned_data
             username=data['username']
             password=data['password']
             password2=data['password2']
+            titles = OrgPublish.objects.all()
             if not User.objects.all().filter(username=username):
                 if rf.pwd_validate(password,password2):
                    # user=User.objects.create_user(username,password)
                    # user.save()
                     User.objects.create(username= username,password=password)
-                    login_validate(req,username,password)
-                    return render_to_response('index.html',{'user':username})
+                    login_validate(request,username,password)
+
+                    #return render_to_response('index.html',{'user':username})
+                   # return render_to_response('index_login.html',locals())
+                    return HttpResponseRedirect('/index_login/')  
                 else:
                     error.append('Please input the same password')
             else:
                 error.append('The username has existed,please change your username')
     else:
         rf=RegistForm()
-    return render_to_response('regist.html',{'rf':rf,'error':error },context_instance=RequestContext(req))
+    return render_to_response('regist.html',{'rf':rf,'error':error },context_instance=RequestContext(request))
 
 def login_validate(request,username,password):
     rtvalue = False
@@ -82,20 +93,26 @@ def login_validate(request,username,password):
     return rtvalue  
 
 #登陆
-def login(req):
+def login(request):
     error = []
-    if req.method == 'POST':
-        uf = LoginForm(req.POST)
+    if request.method == 'POST':
+        uf = LoginForm(request.POST)
         if uf.is_valid():
             #获取表单用户密码
             username= uf.cleaned_data['username']
             password = uf.cleaned_data['password']
             #获取的表单数据与数据库进行比较
             user = User.objects.filter(username__exact = username,password__exact = password)
+            titles = OrgPublish.objects.all()
             if user:
                 #比较成功，跳转index
-                #response = HttpResponseRedirect('/index/')
-                return render_to_response('/index',{'user':username})
+                request.session['username'] = username
+         #       response = HttpResponseRedirect('/index/')
+                return HttpResponseRedirect('/index_login/')  
+                #return render_to_response('/index_login',{'user':username,'titles':titles})
+                #return render_to_response('index_login.html',locals())
+                #return render_to_response('/index_login',locals(),RequestContext(request))
+
                 #将username写入浏览器cookie,失效时间为3600
                 #response.set_cookie('username',username,3600)
                 #return response#
@@ -109,14 +126,31 @@ def login(req):
         uf = LoginForm()
         #error.append('Please input both username and password') 
     #return render_to_response('login.html',{'uf':uf},context_instance=RequestContext(req))
-    return render_to_response('login.html',{'error':error,'uf':uf},context_instance=RequestContext(req))
+    return render_to_response('login.html',{'error':error,'uf':uf},context_instance=RequestContext(request))
 
-#登陆成功
-def index(req):
-    username = req.COOKIES.get('username','')
-    return render_to_response('index.html' ,{'username':username})
+#首页
+def index(request):
+#    username = request.COOKIES.get('username','')
+    titles = OrgPublish.objects.all()
+#    names = Resume.objects.all()
+#    return render_to_response("personal.html",locals())
+#    return render_to_response('index.html',{'username':username,'titles':titles},context_instance=RequestContext(req))
+    return render_to_response("index.html",locals())
     #return HttpResponseRedirect('/index/')
+#登录成功
+def index_login(request):
+    username = request.COOKIES.get('username','')
+    titles = OrgPublish.objects.all()
+    return render_to_response("index_login.html",locals())
 
+#根据关键字来搜索文章     
+def search(request):  
+    if request.method == 'POST':  
+        #从POST请求中获取查询关键字  
+        key=request.POST.get('keyword',None)  
+        return index(request,keyword=key)  
+    else:  
+        return index(request)
 #退出
 def logout(req):
     response = HttpResponse('logout !!')
@@ -125,7 +159,7 @@ def logout(req):
     return response
 
 #更改密码            
-def changepassword(request,username):  
+def ch_password(request,username):  
     error = []  
     if request.method == 'POST':  
         form = ChangepwdForm(request.POST)  
@@ -146,7 +180,7 @@ def changepassword(request,username):
             error.append('Please input the required domain')  
     else:  
         form = ChangepwdForm()  
-    return render_to_response('changepassword.html',{'form':form,'error':error},context_instance=RequestContext(request))
+    return render_to_response('ch_password.html',{'form':form,'error':error},context_instance=RequestContext(request))
 
 #机构认证
 
@@ -157,7 +191,8 @@ def legalize(req):
         if leg_f.is_valid():                             
             leg_f.save()
 #            return render_to_response('login.html')
-            return HttpResponseRedirect('/index/')  
+#            return HttpResponseRedirect('/index/')  
+            return HttpResponseRedirect('/business_center/')  
         else:
             error.append('Please input all the information')
     else:
@@ -173,7 +208,9 @@ def school_legalize(req):
         if sl_f.is_valid():
             sl_f.save()
 #            return render_to_response('login.html')
-            return HttpResponseRedirect('/index/')  
+#            return HttpResponseRedirect('/index/')  
+#            return render_to_response('Campus_community.html')
+            return HttpResponseRedirect('/Campus_community/')  
         else:
             error.append('Please input all the information')
     else:

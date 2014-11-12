@@ -89,4 +89,4 @@ class OrgPublish(models.Model):
     datetime=models.DateTimeField(verbose_name=u'发布时间',auto_now_add=True)
     org=models.ForeignKey(Organization,verbose_name=u'发布机构')
     def __unicode__(self):
-        return self.org
+        return self.title
